@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Deepshika ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(to right, #ff758c, #ff7eb3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      transition: background 2s;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(0,0,0,0.3);
+      animation: fadeIn 2s ease;
+      z-index: 2;
+    }
+
+    h1 { color: #ff4b7d; }
+    p { font-size: 20px; color: #333; }
+
+    .buttons {
+      margin-top: 25px;
+      position: relative;
+      height: 60px;
+    }
+
+    button {
+      padding: 10px 25px;
+      border: none;
+      font-size: 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      position: absolute;
+    }
+
+    #yesBtn {
+      background: #28a745;
+      color: white;
+      left: 40px;
+    }
+
+    #noBtn {
+      background: #dc3545;
+      color: white;
+      left: 160px;
+    }
+
+    .heart {
+      position: absolute;
+      color: red;
+      font-size: 24px;
+      animation: float 5s linear infinite;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+    }
+
+    .shooting-star {
+      position: absolute;
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(90deg, white, transparent);
+      animation: shoot 1s linear;
+    }
+
+    @keyframes shoot {
+      from {
+        transform: translate(0,0);
+        opacity: 1;
+      }
+      to {
+        transform: translate(300px,300px);
+        opacity: 0;
+      }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    .nightMessage {
+      color: white;
+      font-size: 28px;
+      text-align: center;
+      display: none;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card" id="card">
+  <h1>Deepshika ❤️</h1>
+  <p>
+    From the moment I met you,<br>
+    my world became more beautiful.<br><br>
+    Will you be mine forever?
+  </p>
+
+  <div class="buttons">
+    <button id="yesBtn" onclick="yesClick()">YES</button>
+    <button id="noBtn" onmouseover="moveNo()">NO</button>
+  </div>
+
+  <h2>— Yours, Karan 💙</h2>
+</div>
+
+<div class="nightMessage" id="nightMsg">
+  🌙 Under this beautiful night sky,<br>
+  I promise to love you forever Deepshika 💖<br><br>
+  — Karan
+</div>
+
+<script>
+  function moveNo() {
+    const noBtn = document.getElementById("noBtn");
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+    noBtn.style.position = "fixed";
+  }
+
+  function yesClick() {
+    document.body.style.background = "radial-gradient(circle at top, #020111 0%, #000000 70%)";
+    document.getElementById("card").style.display = "none";
+    document.getElementById("nightMsg").style.display = "block";
+
+    createStars();
+    setInterval(createShootingStar, 1200);
+  }
+
+  function createStars() {
+    for (let i = 0; i < 150; i++) {
+      const star = document.createElement("div");
+      star.className = "star";
+      star.style.left = Math.random() * 100 + "vw";
+      star.style.top = Math.random() * 100 + "vh";
+      star.style.opacity = Math.random();
+      document.body.appendChild(star);
+    }
+  }
+
+  function createShootingStar() {
+    const star = document.createElement("div");
+    star.className = "shooting-star";
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.top = Math.random() * 50 + "vh";
+    document.body.appendChild(star);
+
+    setTimeout(() => {
+      star.remove();
+    }, 1000);
+  }
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+  }
+
+  setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
